@@ -3,6 +3,7 @@ import { ref, watch, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import NeuralToast from './components/NeuralToast.vue';
 import AppSidebar from './components/AppSidebar.vue';
+import useHotkeys from './composables/useHotkeys';
 
 const router = useRouter();
 const route = useRoute();
@@ -35,6 +36,29 @@ const xpPercentage = computed(() => {
   if (currentBalance.value >= next) return 100;
   return Math.min((currentBalance.value / next) * 100, 100);
 });
+
+// modal control + handler con log
+const showTransModal = ref(false);
+const openTransModal = (e?: Event) => {
+  console.log('[app] openTransModal triggered', e);
+  showTransModal.value = true;
+};
+
+// montar/limpiar listener global (misma referencia)
+onMounted(() => {
+  window.addEventListener('trigger-new-modal', openTransModal);
+});
+onUnmounted(() => {
+  window.removeEventListener('trigger-new-modal', openTransModal);
+});
+
+// atajos: añadimos alt+n + ctrl+n y una alternativa ctrl+alt+n
+useHotkeys({
+  'alt+n': () => { console.log('[hotkey] alt+n'); window.dispatchEvent(new Event('trigger-new-modal')); },
+  'ctrl+n': () => { console.log('[hotkey] ctrl+n'); window.dispatchEvent(new Event('trigger-new-modal')); },
+  'ctrl+alt+n': () => { console.log('[hotkey] ctrl+alt+n'); window.dispatchEvent(new Event('trigger-new-modal')); },
+  'n': () => { /* opcional: atajo sin modificador si lo quieres */ }
+}, { ignoreInputs: true });
 
 // --- FUNCIONES DE BOTONES ---
 const login = () => {
@@ -110,6 +134,15 @@ const handleNavigate = (view: string) => {
           <RouterView :isCorpoMode="isCorpoMode" @update-balance="updateBalance" />
           
       </main>
+    </div>
+
+    <!-- muestra el modal para probar -->
+    <div v-if="showTransModal" class="fixed inset-0 z-50 flex items-center justify-center">
+      <div class="bg-black/80 absolute inset-0" @click="showTransModal = false"></div>
+      <div class="bg-white p-6 z-60 rounded">
+        <p>Modal abierto por hotkey</p>
+        <button @click="showTransModal = false">Cerrar</button>
+      </div>
     </div>
   </div>
 </template>
