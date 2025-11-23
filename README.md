@@ -4,7 +4,7 @@ Sistema de gestión financiera personal con estética inmersiva Cyberpunk 2077. 
 
 ## 📺 Demo y Explicación
 
-**[PEGAR AQUÍ EL ENLACE DE TU VIDEO DE YOUTUBE O LOOM]**
+**LINK: https://youtu.be/dLxX5xl9hbo**
 
 ---
 
@@ -116,4 +116,4 @@ Frontend:
 
 ## **👤 Autor**
 
-Desarrollado por Manuel Morales Martinez para el Taller del parcial numero 3.
+Desarrollado por Manuel Morales Martinez - ID: 000406384 - para el Taller del parcial numero 3.
