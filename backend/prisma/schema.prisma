@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Category {
+  id           Int           @id @default(autoincrement())
+  name         String
+  icon         String?
+  color        String
+  transactions Transaction[]
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  amount      Float
+  description String
+  type        String
+  date        DateTime @default(now())
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+}
+
+model Goal {
+  id            Int      @id @default(autoincrement())
+  name          String
+  targetAmount  Float    // Cuánto quieres ahorrar
+  currentAmount Float    @default(0) // Cuánto llevas
+  icon          String   // Emoji o icono
+  deadline      DateTime? 
+}

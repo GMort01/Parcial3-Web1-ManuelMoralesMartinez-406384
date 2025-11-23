@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- ATMÓSFERA CYBERPUNK --- */
+body {
+  background-color: #000000; /* Negro azulado profundo */
+  /* Patrón de fondo sutil de circuito/rejilla */
+  background-image: 
+    linear-gradient(rgba(0, 242, 255, 0.096) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  font-family: 'Rajdhani', sans-serif; /* Fuente principal */
+  color: #feffff;
+  overflow-x: hidden; /* Evitar scroll horizontal por efectos */
+}
+
+/* Fuente para números y datos técnicos */
+.font-tech {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* --- EFECTOS ESPECIALES --- */
+
+/* 1. Bordes Angulares (Cyber-Clip) */
+/* Corta las esquinas para que no sean redondas */
+.cyber-clip {
+  clip-path: polygon(
+    0 10px, 10px 0, 
+    calc(100% - 10px) 0, 100% 10px, 
+    100% calc(100% - 10px), calc(100% - 10px) 100%, 
+    10px 100%, 0 calc(100% - 10px)
+  );
+}
+
+/* 2. Efecto de Brillo de Neón (Glow) */
+.neon-border-cyan {
+  box-shadow: 0 0 5px rgba(0, 243, 255, 0.2), inset 0 0 5px rgba(0, 243, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.4);
+}
+.neon-border-pink {
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.2), inset 0 0 5px rgba(255, 0, 255, 0.1);
+  border: 1px solid rgba(255, 0, 255, 0.4);
+}
+
+/* 3. Animación de Botón "Mercenario" */
+/* Al pasar el mouse, brilla intensamente y se "sacude" un poco */
+.btn-cyber {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.btn-cyber:hover {
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Línea de escaneo que pasa por el botón */
+.btn-cyber::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(61, 163, 168, 0.4),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.btn-cyber:hover::after {
+  left: 100%;
+  opacity: 1;
+  transition: left 0.5s, opacity 0.2s;
+}
+
+/* 4. Efecto Scanline (Monitor viejo sutil) */
+.scanlines::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    transparent 2px,
+    rgba(12, 12, 12, 0.979) 3px
+  );
+  pointer-events: none; /* Para que puedas hacer clic a través de ellas */
+  z-index: 90;
+  opacity: 0.5;
+}

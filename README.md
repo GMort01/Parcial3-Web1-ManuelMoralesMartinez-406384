@@ -32,6 +32,7 @@ El código se organiza de forma modular:
 ## 💿 Instalación y Uso
 
 1. Clonar el repositorio.
+   https://github.com/GMort01/Parcial3-Web1-ManuelMoralesMartinez-406384.git
 2. Instalar dependencias:
    ```bash
    npm install
