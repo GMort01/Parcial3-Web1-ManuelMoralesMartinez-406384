@@ -116,4 +116,4 @@ Frontend:
 
 ## **👤 Autor**
 
-Desarrollado por Manuel Morales Martinez para el Taller del parcial numero 2.
+Desarrollado por Manuel Morales Martinez para el Taller del parcial numero 3.
