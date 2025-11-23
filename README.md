@@ -45,39 +45,39 @@ cd EdisFlow
 
 El backend maneja la API y la base de datos.
 
-# Entrar a la carpeta del backend
-cd backend
+- Entrar a la carpeta del backend
+   cd backend
 
-# Instalar dependencias
-npm install
+- Instalar dependencias
+   npm install
 
-# Configurar la Base de Datos (SQLite)
-# Esto creará el archivo dev.db y las tablas necesarias
-npx prisma migrate dev --name init
+- Configurar la Base de Datos (SQLite)
+- Esto creará el archivo dev.db y las tablas necesarias
+   npx prisma migrate dev --name init
 
-# (Opcional) Llenar la base de datos con datos de prueba
-# Ejecuta esto si quieres ver la app con datos ficticios al iniciar
-npm run seed
+- (Opcional) Llenar la base de datos con datos de prueba
+- Ejecuta esto si quieres ver la app con datos ficticios al iniciar
+   npm run seed
 
-# Iniciar el servidor en modo desarrollo
-npm run dev
+- Iniciar el servidor en modo desarrollo
+   npm run dev
 
 
 Nota: El servidor correrá en http://localhost:3001.
 Puedes ver la documentación de la API en http://localhost:3001/api-docs.
 
-3. **Configuración del Frontend (Cliente)**
+1. **Configuración del Frontend (Cliente)**
 
 Abre una nueva terminal (sin cerrar la del backend) para iniciar la interfaz visual.
 
-# Volver a la raíz si estás en backend, o entrar a frontend
-cd frontend
+- Volver a la raíz si estás en backend, o entrar a frontend
+   cd frontend
 
-# Instalar dependencias (Vue, Tailwind, Chart.js, etc.)
-npm install
+- Instalar dependencias (Vue, Tailwind, Chart.js, etc.)
+   npm install
 
-# Iniciar el servidor de desarrollo
-npm run dev
+- iniciar el servidor de desarrollo
+   npm run dev
 
 
 Nota: El frontend correrá usualmente en http://localhost:5173 (o el puerto que indique la terminal).
